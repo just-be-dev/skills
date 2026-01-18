@@ -1,6 +1,6 @@
 {
   "$schema": "./marketplace.schema.json",
-  "name": "skills",
+  "name": "just-be",
   "owner": {
     "name": "Justin Bennett"
   },
@@ -11,9 +11,9 @@
   },
   "plugins": [
     {
-      "name": "example-skill",
-      "source": "./plugins/example-skill",
-      "description": "An example skill plugin to demonstrate the marketplace structure"
+      "name": "mise",
+      "source": "./plugins/mise",
+      "description": "Mise integration plugin for managing development tools and environments"
     }
   ]
 }

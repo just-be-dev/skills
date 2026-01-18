@@ -1,8 +1,0 @@
-{
-  "name": "example-skill",
-  "description": "An example skill plugin to demonstrate the marketplace structure",
-  "version": "1.0.0",
-  "author": {
-    "name": "Justin Bennett"
-  }
-}

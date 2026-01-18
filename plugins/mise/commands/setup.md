@@ -1,0 +1,60 @@
+---
+description: Set up mise configuration in the current project
+allowed-tools: Bash, Read, Write, Edit, AskUserQuestion
+---
+
+# Mise Setup Command
+
+This command helps set up mise (https://mise.jdx.dev) configuration in the current project.
+
+## Instructions
+
+When this command is invoked, you should:
+
+1. **Check if mise is installed**
+   - Run `which mise` to verify mise is available
+   - If not installed, inform the user to install it via `curl https://mise.run | sh` and STOP
+   
+2. **Check for existing configuration**
+   - Look for existing mise configuration files:
+     - `mise.toml` (preferred name)
+   - If the configuration does not exist, create `mise.toml` in the current directory.
+
+3. **Create or update mise configuration**
+   - If creating new configuration, check the current directory for existing tooling.
+     - If a package.json file exists, check for lockfiles (pnpm, yarn, npm, bun) and make sure the relevant tools are installed by running `mise use <tool_name>`. If it's using npm for versioning, you just need to make sure to run `mise use node` and that'll pull in npm. 
+     - convert any package.json scripts into mise tasks.
+  - For new or existing configurations, make sure the following details are present:
+    - The `[settings]` section should have `experimental = true` and `pin = true`
+    - Make sure there's a `postinstall` hook in the `[hooks]` section that installs packages from the configured package manager.
+      - For instance, if it's a bun project, you'll want `postinstall = "bun install"`
+      - If it's a python project (that uses uv) you'll want `postinstall = "uv sync"`
+  - For node compatible projects (node.js, bun, or deno in node compability mode)
+    - Make sure there's an `[env]` section with `_.path = "node_modules/.bin"`
+
+## Example Configuration
+
+Here's an example `.mise.toml` structure:
+
+```toml
+[tools]
+bun = "1.3.5"
+
+[settings]
+experimental = true
+pin = true
+
+[hooks]
+postinstall = "bun install"
+
+[env]
+_.path = "node_modules/.bin"
+
+[tasks.dev]
+description = "Start development server"
+run = "bun run dev"
+
+[tasks.build]
+description = "Build the project"
+run = "bun run build"
+```
