@@ -1,0 +1,297 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://code.claude.com/schemas/marketplace.json",
+  "title": "Claude Code Plugin Marketplace Schema",
+  "description": "Schema for validating Claude Code plugin marketplace configuration files",
+  "type": "object",
+  "required": ["name", "owner", "plugins"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "name": {
+      "type": "string",
+      "description": "Marketplace identifier (kebab-case, no spaces). Public-facing name users see when installing plugins.",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "not": {
+        "enum": [
+          "claude-code-marketplace",
+          "claude-code-plugins",
+          "claude-plugins-official",
+          "anthropic-marketplace",
+          "anthropic-plugins",
+          "agent-skills",
+          "life-sciences"
+        ]
+      }
+    },
+    "owner": {
+      "type": "object",
+      "description": "Marketplace maintainer information",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the maintainer or team"
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email for the maintainer",
+          "format": "email"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional marketplace metadata",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Brief marketplace description"
+        },
+        "version": {
+          "type": "string",
+          "description": "Marketplace version"
+        },
+        "pluginRoot": {
+          "type": "string",
+          "description": "Base directory prepended to relative plugin source paths",
+          "pattern": "^(?!.*\\.\\.).*$"
+        }
+      }
+    },
+    "plugins": {
+      "type": "array",
+      "description": "List of available plugins",
+      "items": {
+        "$ref": "#/definitions/plugin"
+      }
+    }
+  },
+  "definitions": {
+    "plugin": {
+      "type": "object",
+      "required": ["name", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Plugin identifier (kebab-case, no spaces). Public-facing name users see when installing.",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "source": {
+          "description": "Where to fetch the plugin from",
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "Relative path to plugin within the repository",
+              "pattern": "^(?!.*\\.\\.).*$"
+            },
+            {
+              "type": "object",
+              "description": "External plugin source configuration",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/githubSource"
+                },
+                {
+                  "$ref": "#/definitions/gitSource"
+                }
+              ]
+            }
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief plugin description"
+        },
+        "version": {
+          "type": "string",
+          "description": "Plugin version"
+        },
+        "author": {
+          "type": "object",
+          "description": "Plugin author information",
+          "required": ["name"],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Author name"
+            },
+            "email": {
+              "type": "string",
+              "description": "Author email",
+              "format": "email"
+            }
+          }
+        },
+        "homepage": {
+          "type": "string",
+          "description": "Plugin homepage or documentation URL",
+          "format": "uri"
+        },
+        "repository": {
+          "type": "string",
+          "description": "Source code repository URL",
+          "format": "uri"
+        },
+        "license": {
+          "type": "string",
+          "description": "SPDX license identifier (e.g., MIT, Apache-2.0)"
+        },
+        "keywords": {
+          "type": "array",
+          "description": "Tags for plugin discovery and categorization",
+          "items": {
+            "type": "string"
+          }
+        },
+        "category": {
+          "type": "string",
+          "description": "Plugin category for organization"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags for searchability",
+          "items": {
+            "type": "string"
+          }
+        },
+        "strict": {
+          "type": "boolean",
+          "description": "Controls whether plugins need their own plugin.json file (default: true)",
+          "default": true
+        },
+        "commands": {
+          "description": "Custom paths to command files or directories",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "agents": {
+          "description": "Custom paths to agent files",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "hooks": {
+          "description": "Custom hooks configuration or path to hooks file",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "mcpServers": {
+          "description": "MCP server configurations or path to MCP config",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/mcpServer"
+              }
+            }
+          ]
+        },
+        "lspServers": {
+          "description": "LSP server configurations or path to LSP config",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      }
+    },
+    "githubSource": {
+      "type": "object",
+      "description": "GitHub repository source",
+      "required": ["source", "repo"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "const": "github"
+        },
+        "repo": {
+          "type": "string",
+          "description": "GitHub repository in owner/repo format",
+          "pattern": "^[a-zA-Z0-9_-]+/[a-zA-Z0-9_.-]+$"
+        }
+      }
+    },
+    "gitSource": {
+      "type": "object",
+      "description": "Git repository source",
+      "required": ["source", "url"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "const": "url"
+        },
+        "url": {
+          "type": "string",
+          "description": "Git repository URL",
+          "format": "uri"
+        }
+      }
+    },
+    "mcpServer": {
+      "type": "object",
+      "description": "MCP server configuration",
+      "required": ["command"],
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "Command to execute (can use ${CLAUDE_PLUGIN_ROOT} variable)"
+        },
+        "args": {
+          "type": "array",
+          "description": "Command arguments",
+          "items": {
+            "type": "string"
+          }
+        },
+        "env": {
+          "type": "object",
+          "description": "Environment variables",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

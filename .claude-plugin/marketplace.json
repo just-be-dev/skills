@@ -1,10 +1,11 @@
 {
+  "$schema": "./marketplace.schema.json",
   "name": "skills",
   "owner": {
-    "name": "Your Name"
+    "name": "Justin Bennett"
   },
   "metadata": {
-    "description": "A marketplace of Claude Code skills and plugins",
+    "description": "Jeb's marketplace of Claude Code skills and plugins",
     "version": "1.0.0",
     "pluginRoot": "./plugins"
   },
