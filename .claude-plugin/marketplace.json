@@ -14,6 +14,11 @@
       "name": "mise",
       "source": "./plugins/mise",
       "description": "Mise integration plugin for managing development tools and environments"
+    },
+    {
+      "name": "meta",
+      "source": "./plugins/meta",
+      "description": "Meta plugin for managing and creating plugins in the just-be-dev/skills marketplace"
     }
   ]
 }
