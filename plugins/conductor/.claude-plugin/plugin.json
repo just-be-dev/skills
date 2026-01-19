@@ -1,0 +1,8 @@
+{
+  "name": "conductor",
+  "description": "Conductor integration plugin for setting up workspace configuration",
+  "version": "1.0.0",
+  "author": {
+    "name": "Justin Bennett"
+  }
+}

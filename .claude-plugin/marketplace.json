@@ -11,6 +11,11 @@
   },
   "plugins": [
     {
+      "name": "conductor",
+      "source": "./plugins/conductor",
+      "description": "Conductor integration plugin for setting up workspace configuration"
+    },
+    {
       "name": "mise",
       "source": "./plugins/mise",
       "description": "Mise integration plugin for managing development tools and environments"
