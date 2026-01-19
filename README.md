@@ -27,6 +27,15 @@ Once the marketplace is added, you can install plugins:
 
 ## Available Plugins
 
+### Conductor
+
+[Conductor](https://conductor.build/) is a Mac app for running coding agents in parallel. This plugin helps set up conductor.json configuration files to share scripts across your repository.
+
+**Install:** `/plugin install conductor@just-be`
+
+**Commands:**
+- `/setup` - Create a conductor.json file with setup and run scripts based on your project configuration
+
 ### Mise
 
 [mise](https://mise.jdx.dev/) is a tool for managing development tools and environments. It acts as a simple replacement for make.
