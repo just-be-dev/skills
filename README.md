@@ -29,9 +29,18 @@ Once the marketplace is added, you can install plugins:
 
 ### Mise
 
-[mise](https://mise.jdx.dev/) is a tool for managing development tools and environments. It acts as a simple replacement for make. 
+[mise](https://mise.jdx.dev/) is a tool for managing development tools and environments. It acts as a simple replacement for make.
 
 **Install:** `/plugin install mise@just-be`
+
+### Meta
+
+The meta plugin is a plugin for managing plugins. It automates the creation of new plugins in this marketplace by opening GitHub issues that Claude automatically implements.
+
+**Install:** `/plugin install meta@just-be`
+
+**Commands:**
+- `/create-plugin` - Create a new plugin by opening a GitHub issue and assigning it to claude
 
 ## Development
 
