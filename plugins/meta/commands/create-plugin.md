@@ -47,6 +47,28 @@ When this command is invoked, you should:
    - `.claude-plugin/plugin.json` with plugin metadata
    - `commands/` directory containing command markdown files
    - Each command should have YAML frontmatter with `description` and `allowed-tools`
+
+   ## Important: Update Marketplace Registry
+   After creating the plugin files, you MUST also update the root `.claude-plugin/marketplace.json` file to register the new plugin in the marketplace. Add an entry with the following format:
+   ```json
+   {
+     "name": "[plugin-name]",
+     "source": "./plugins/[plugin-name]",
+     "description": "[plugin description]"
+   }
+   ```
+   Without this step, the plugin will not be discoverable in the marketplace.
+
+   ## Important: Update README.md
+   You MUST also update the root `README.md` file to add the new plugin to the "Available Plugins" section. Add an entry following this format:
+   ```markdown
+   ### [Plugin Display Name]
+
+   [Brief description of what the plugin does]
+
+   **Install:** `/plugin install [plugin-name]@just-be`
+   ```
+   Add the new plugin entry after the existing plugins in alphabetical order. Without this step, users won't know about the new plugin.
    ```
 
 4. **Execute the gh command**
