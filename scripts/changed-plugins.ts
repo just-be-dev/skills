@@ -1,5 +1,11 @@
 #!/usr/bin/env bun
 
+/**
+ * Detects which plugins have been modified compared to origin/main.
+ * Can list all changed plugins or return the git diff for a specific plugin.
+ * Supports including staged changes and comparing against a specific branch.
+ */
+
 import { $ } from "bun";
 
 interface Options {

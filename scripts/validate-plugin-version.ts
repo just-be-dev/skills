@@ -1,5 +1,11 @@
 #!/usr/bin/env bun
 
+/**
+ * Analyzes a git diff to determine if a plugin version update is required.
+ * Reads diff from stdin and uses Claude AI to decide whether the changes
+ * warrant a version bump based on semantic versioning rules.
+ */
+
 import { $ } from "bun";
 
 async function readStdin(): Promise<string> {

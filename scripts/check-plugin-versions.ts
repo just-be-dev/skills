@@ -1,5 +1,11 @@
 #!/usr/bin/env bun
 
+/**
+ * Validates that all modified plugins have appropriate version updates.
+ * Checks each changed plugin to determine if its changes require a version bump,
+ * and exits with an error if any plugins need version updates.
+ */
+
 import { $ } from "bun";
 
 interface Options {

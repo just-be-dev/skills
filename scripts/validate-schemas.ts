@@ -1,5 +1,11 @@
 #!/usr/bin/env bun
 
+/**
+ * Validates all Claude plugin manifests against their schemas.
+ * Checks marketplace.json and all plugin.json files in the plugins directory
+ * using the Claude CLI validation command.
+ */
+
 import { $ } from "bun";
 import { readdirSync, statSync } from "fs";
 import { join } from "path";

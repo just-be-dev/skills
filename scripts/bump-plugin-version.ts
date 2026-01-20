@@ -1,5 +1,11 @@
 #!/usr/bin/env bun
 
+/**
+ * Automatically bumps a plugin's version based on git diff analysis.
+ * Uses Claude AI to determine the appropriate semantic version bump (major/minor/patch/none)
+ * by analyzing staged changes to the specified plugin.
+ */
+
 import { $ } from "bun";
 import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
