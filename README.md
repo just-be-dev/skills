@@ -67,18 +67,18 @@ Run `mise install` to setup all the necessary dependencies. Scripts in this envi
 
 Run tasks using `mise run <task>`:
 
-- **`mise run validate`** - Validate marketplace and plugin schemas
-- **`mise run check-versions`** - Check if changed plugins need version updates
+- **`mise run validate`** - Validate marketplace and plugin manifests
+- **`mise run check-versions`** - Verify that changed plugins have version updates
 - **`mise run bump-version plugin=<name>`** - Automatically bump plugin version based on changes
 
 ### Scripts
 
 The repository includes several utility scripts in `scripts/`:
 
-- **`changed-plugins.ts`** - Detect which plugins have changed
-- **`validate-schemas.ts`** - Validate marketplace.json and plugin.json files 
-- **`check-plugin-versions.ts`** - Check if plugin versions need to be updated
-- **`validate-plugin-version.ts`** - Validate if a change requires a version bump
+- **`detect-changed-plugins.ts`** - Detect which plugins have changed compared to main
+- **`validate-manifests.ts`** - Validate marketplace.json and plugin.json files
+- **`verify-version-updates.ts`** - Verify that changed plugins have appropriate version updates
+- **`requires-version-bump.ts`** - Determine if a diff requires a version bump
 - **`bump-plugin-version.ts`** - Automatically determine and apply version bumps
 
 ## Contributing

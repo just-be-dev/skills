@@ -36,7 +36,7 @@ function parseArgs(): Options {
 
 async function getChangedPlugins(options: Options): Promise<string[]> {
   try {
-    const args = ["./scripts/changed-plugins.ts"];
+    const args = ["./scripts/detect-changed-plugins.ts"];
     if (options.staged) {
       args.push("--staged");
     }
@@ -56,7 +56,7 @@ async function validatePlugin(
   options: Options,
 ): Promise<boolean> {
   try {
-    const args = ["./scripts/changed-plugins.ts", pluginName];
+    const args = ["./scripts/detect-changed-plugins.ts", pluginName];
     if (options.staged) {
       args.push("--staged");
     }
@@ -67,15 +67,15 @@ async function validatePlugin(
     // Get the diff for the plugin
     const diff = await $.raw(args.join(" ")).text();
 
-    // Pipe it to validate-plugin-version
+    // Pipe it to requires-version-bump
     const result = await $`echo ${diff}`
-      .pipe($`./scripts/validate-plugin-version.ts`)
+      .pipe($`./scripts/requires-version-bump.ts`)
       .text();
 
     const response = result.trim();
     return response === "YES";
   } catch (error) {
-    // If validate-plugin-version exits with code 0, it returns false (no update needed)
+    // If requires-version-bump exits with code 0, it returns false (no update needed)
     return false;
   }
 }

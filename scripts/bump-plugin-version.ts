@@ -33,7 +33,7 @@ function parseArgs(): string | null {
 async function getPluginDiff(pluginName: string): Promise<string> {
   try {
     const diff =
-      await $`bun scripts/changed-plugins.ts --staged ${pluginName}`.text();
+      await $`bun scripts/detect-changed-plugins.ts --staged ${pluginName}`.text();
     return diff;
   } catch (error) {
     console.error(`No changes detected for plugin: ${pluginName}`);
