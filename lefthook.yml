@@ -3,4 +3,4 @@ pre-push:
     check-plugin-versions:
       only:
         - ref: main
-      run: bun run scripts/check-plugin-versions.ts
+      run: bun run scripts/verify-version-updates.ts

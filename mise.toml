@@ -14,12 +14,12 @@ pin = true
 postinstall = ["bun install", "lefthook install"]
 
 [tasks.validate]
-description = "Validate marketplace and plugin schemas"
-run = "bun run scripts/validate-schemas.ts"
+description = "Validate marketplace and plugin manifests"
+run = "bun run scripts/validate-manifests.ts"
 
 [tasks.check-versions]
-description = "Check if changed plugins need version updates"
-run = "bun run scripts/check-plugin-versions.ts"
+description = "Verify that changed plugins have version updates"
+run = "bun run scripts/verify-version-updates.ts"
 
 [tasks.bump-version]
 description = "Bump the version of a plugin based on staged changes"
