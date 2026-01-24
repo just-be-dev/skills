@@ -97,7 +97,18 @@ Now configure the repository with best practices:
    ```
    This gives you the `owner/repo` format needed for configuration.
 
-2. **Generate repository description:**
+2. **Check and generate repository description (if needed):**
+
+   First, check if a description already exists:
+   ```bash
+   gh repo view --json description --jq .description
+   ```
+
+   **If description already exists and is not empty:**
+   - Skip description generation and setting
+   - Preserve the existing description
+
+   **If description is empty or null, generate a new one:**
 
    **If README.md exists:**
    - Read the README.md file (first 500 characters)
@@ -122,7 +133,7 @@ Now configure the repository with best practices:
    # Enable auto-delete of branches on merge
    gh repo edit --delete-branch-on-merge
 
-   # Set repository description
+   # Set repository description (only if generated in step 2)
    gh repo edit --description "..."
    ```
 
@@ -208,7 +219,7 @@ Remote origin found: https://github.com/justinbennett/existing-repo
 Configuring repository settings...
 ✓ Merge commits disabled
 ✓ Auto-delete branches enabled
-✓ Description set: "A comprehensive tool for managing project dependencies"
+✓ Description preserved: "A comprehensive tool for managing project dependencies"
 
 Repository configured successfully!
 URL: https://github.com/justinbennett/existing-repo
@@ -218,5 +229,6 @@ URL: https://github.com/justinbennett/existing-repo
 
 - This command is idempotent - safe to run multiple times
 - Configuration commands set desired state, so re-running will update settings
+- Existing repository descriptions are preserved and never overridden
 - Always check prerequisites first to fail fast with helpful messages
 - Continue through configuration steps even if some fail, but report all errors
