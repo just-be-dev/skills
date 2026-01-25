@@ -1,7 +1,7 @@
 {
   "name": "meta",
   "description": "Meta plugin for managing and creating plugins in the just-be-dev/skills marketplace",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Justin Bennett"
   }
