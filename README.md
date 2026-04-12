@@ -42,6 +42,15 @@ Automatically sets up mise when starting a Claude Code session, particularly use
 
 **Install:** `/plugin install claude-web@just-be`
 
+### Dev
+
+Common dev shortcuts and workflow commands.
+
+**Install:** `/plugin install dev@just-be`
+
+**Commands:**
+- `/commit` - Review all changes and group them into logical commits with clear messages
+
 ### GitHub
 
 Automates GitHub repository setup and configuration with best practices. This plugin helps create new repositories, configure remote origins, and apply recommended settings including disabling merge commits and enabling auto-deletion of merged branches.
