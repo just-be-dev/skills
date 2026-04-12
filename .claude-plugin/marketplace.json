@@ -21,6 +21,11 @@
       "description": "Conductor integration plugin for setting up workspace configuration"
     },
     {
+      "name": "dev",
+      "source": "./plugins/dev",
+      "description": "Common dev shortcuts and workflow commands"
+    },
+    {
       "name": "github",
       "source": "./plugins/github",
       "description": "GitHub integration plugin for repository setup and configuration"

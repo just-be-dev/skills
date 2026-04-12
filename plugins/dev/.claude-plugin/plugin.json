@@ -1,0 +1,8 @@
+{
+  "name": "dev",
+  "description": "Common dev shortcuts and workflow commands",
+  "version": "1.0.0",
+  "author": {
+    "name": "Justin Bennett"
+  }
+}
