@@ -1,6 +1,6 @@
 [tools]
 bun = "1.3.6"
-claude = "2.1.12"
+claude = "2.1.138"
 lefthook = "2.0.15"
 
 [env]
