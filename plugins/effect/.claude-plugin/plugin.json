@@ -1,0 +1,8 @@
+{
+  "name": "effect",
+  "description": "Effect-TS integration plugin for setting up and working with Effect projects",
+  "version": "0.1.0",
+  "author": {
+    "name": "Justin Bennett"
+  }
+}

@@ -26,6 +26,11 @@
       "description": "Common dev shortcuts and workflow commands"
     },
     {
+      "name": "effect",
+      "source": "./plugins/effect",
+      "description": "Effect-TS integration plugin for setting up and working with Effect projects"
+    },
+    {
       "name": "github",
       "source": "./plugins/github",
       "description": "GitHub integration plugin for repository setup and configuration"
