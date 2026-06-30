@@ -1,7 +1,7 @@
 {
   "name": "effect",
-  "description": "Effect-TS integration plugin for setting up and working with Effect projects",
-  "version": "0.1.0",
+  "description": "[DEPRECATED — moved to just-be-dev/workspace] Effect-TS integration plugin for setting up and working with Effect projects",
+  "version": "0.1.1",
   "author": {
     "name": "Justin Bennett"
   }

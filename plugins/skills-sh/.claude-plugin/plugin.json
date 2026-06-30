@@ -1,7 +1,7 @@
 {
   "name": "skills-sh",
-  "description": "Skills installed from skills.sh",
-  "version": "1.2.0",
+  "description": "[DEPRECATED — moved to just-be-dev/workspace] Skills installed from skills.sh",
+  "version": "1.2.1",
   "author": {
     "name": "Justin Bennett"
   }

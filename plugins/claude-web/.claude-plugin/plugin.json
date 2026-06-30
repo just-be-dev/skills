@@ -1,7 +1,7 @@
 {
   "name": "claude-web",
-  "description": "Claude Code web startup hooks for automated mise setup",
-  "version": "1.0.0",
+  "description": "[DEPRECATED — moved to just-be-dev/workspace] Claude Code web startup hooks for automated mise setup",
+  "version": "1.0.1",
   "author": {
     "name": "Justin Bennett"
   }

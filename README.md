@@ -1,5 +1,8 @@
 # Skills
 
+> [!WARNING]
+> **This repository has been dropped and is no longer maintained.** Skills are now managed directly from [just-be-dev/workspace](https://github.com/just-be-dev/workspace). This repository will be archived and is kept only for reference.
+
 This project is a [marketplace](https://code.claude.com/docs/en/plugin-marketplaces) for [Claude Code](https://claude.com/claude-code), which allows me to share common skills and commands between machines.
 
 I conceptualize these plugins like dotfiles for workflows. There's often times where I want config files to be setup in certain ways or find myself making similar changes across projects. Instead of trying to hardcode configuration files in environments that may be different, I use these plugins to automate the setup process.
@@ -34,6 +37,7 @@ Once the marketplace is added, you can install plugins:
 **Install:** `/plugin install conductor@just-be`
 
 **Commands:**
+
 - `/setup` - Create a conductor.json file with setup and run scripts based on your project configuration
 
 ### Claude Web
@@ -49,6 +53,7 @@ Common dev shortcuts and workflow commands.
 **Install:** `/plugin install dev@just-be`
 
 **Commands:**
+
 - `/commit` - Review all changes and group them into logical commits with clear messages
 
 ### GitHub
@@ -58,6 +63,7 @@ Automates GitHub repository setup and configuration with best practices. This pl
 **Install:** `/plugin install github@just-be`
 
 **Commands:**
+
 - `/setup` - Create and configure a GitHub repository with best practices (disables merge commits, enables auto-delete of branches, sets description)
 
 ### Mise
@@ -73,13 +79,14 @@ The meta plugin is a plugin for managing plugins. It automates the creation of n
 **Install:** `/plugin install meta@just-be`
 
 **Commands:**
+
 - `/create-plugin` - Create a new plugin by opening a GitHub issue and assigning it to claude
 
 ## Development
 
 This repository uses [mise](https://mise.jdx.dev/) for task management and includes automated validation and versioning tools.
 
-Run `mise install` to setup all the necessary dependencies. Scripts in this environment do make use of claude code so it assumes you're authenticated. 
+Run `mise install` to setup all the necessary dependencies. Scripts in this environment do make use of claude code so it assumes you're authenticated.
 
 ### Available Tasks
 
@@ -101,7 +108,7 @@ The repository includes several utility scripts in `scripts/`:
 
 ## Contributing
 
-While I'm generally open to contributions, please note that this project is for my personal workflows. I likely won't accept contributions that add plugins that I would be unlikely to use. 
+While I'm generally open to contributions, please note that this project is for my personal workflows. I likely won't accept contributions that add plugins that I would be unlikely to use.
 
 ## Resources
 

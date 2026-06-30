@@ -1,7 +1,7 @@
 {
   "name": "conductor",
-  "description": "Conductor integration plugin for setting up workspace configuration",
-  "version": "1.1.0",
+  "description": "[DEPRECATED — moved to just-be-dev/workspace] Conductor integration plugin for setting up workspace configuration",
+  "version": "1.1.1",
   "author": {
     "name": "Justin Bennett"
   }
